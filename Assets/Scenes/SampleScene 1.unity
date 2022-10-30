@@ -376,10 +376,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: karakter
       objectReference: {fileID: 0}
-    - target: {fileID: 3294770002395649023, guid: e551222485fa5024a8f9a8016fa6e8c0, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e551222485fa5024a8f9a8016fa6e8c0, type: 3}
 --- !u!54 &1508151958734081120

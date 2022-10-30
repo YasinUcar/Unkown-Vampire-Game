@@ -1258,12 +1258,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3294770002395649021}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2828e3208f2030548ba9b3c4de5e2dbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "ziplamaG\xFCc\xFC": 5
+  ziplamaGucu: 0
   rb: {fileID: 3294770002395649022}
 --- !u!54 &3294770002395649022
 Rigidbody:

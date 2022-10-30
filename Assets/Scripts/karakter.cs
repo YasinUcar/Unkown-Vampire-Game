@@ -5,21 +5,38 @@ using UnityEngine.UIElements;
 
 public class karakter : MonoBehaviour
 {
-    float hiz=5f;
-    public float ziplamaG�c�;
+    #region NOTLAR : tek yerde kullanacağın değişkenler için scritableObject kullanabilirsin türkçe karakter içeren (i,ü,ı) gibi değerl verme
+    float hiz = 5f;
+    public float ziplamaGucu;
     private bool karakterYerde;
     public Rigidbody rb;
     private float Hareket;
+    private Animator anim;
+    #endregion
 
     void Start()
     {
         rb = transform.GetComponent<Rigidbody>();
-        
-    }    
+        anim = GetComponent<Animator>();
+    }
     void Update()
     {
+        //olabildiğince kodu parçlara böl spagetti koddan uzak durmaya çalış
+        Move();
+        PlayAnim();
+        print(Mathf.Abs(Hareket));
+    }
+    private void OnCollisionEnter(Collision yerTemasi)
+    {
+        if (yerTemasi.gameObject.tag == "zemin")
+        {
+            karakterYerde = true;
+        }
+    }
+    void Move()
+    {
         Hareket = Input.GetAxis("Horizontal");
-        rb.velocity=new Vector2 (Hareket*hiz, rb.velocity.y);
+        rb.velocity = new Vector2(Hareket * hiz, rb.velocity.y);
 
         if (Input.GetAxisRaw("Horizontal") == -1)
         {
@@ -31,24 +48,31 @@ public class karakter : MonoBehaviour
         }
         if (Input.GetButtonDown("Jump") && karakterYerde == true)
         {
-            rb.AddForce(Vector2.up * ziplamaG�c�, ForceMode.Impulse);
+            rb.AddForce(Vector2.up * ziplamaGucu, ForceMode.Impulse);
             karakterYerde = false;
+        }
+
+    }
+    void PlayAnim()
+    {
+        if (Mathf.Abs(Hareket) > Mathf.Epsilon)
+        {
+            anim.ResetTrigger("idle");
+            anim.SetTrigger("Walk");
+
+        }
+        if (Mathf.Abs(Hareket) == 0)
+        {
+            anim.ResetTrigger("Walk");
+            anim.SetTrigger("idle");
         }
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("animasyon 1 ba�lat");
+            anim.ResetTrigger("idle");
+            anim.ResetTrigger("Walk");
+            anim.SetTrigger("attack");
         }
-        if (Input.GetMouseButtonDown(1))
-        {
-            Debug.Log("animasyon 2 ba�lat");
-        }
+
     }
-    private void OnCollisionEnter(Collision yerTemasi)
-    {
-        if (yerTemasi.gameObject.tag=="zemin")
-        {
-            karakterYerde = true;
-        }
-    }
-  
+
 }
