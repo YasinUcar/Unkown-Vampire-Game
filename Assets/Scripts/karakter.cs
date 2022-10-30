@@ -24,11 +24,10 @@ public class karakter : MonoBehaviour
         //olabildiğince kodu parçlara böl spagetti koddan uzak durmaya çalış
         Move();
         PlayAnim();
-        print(Mathf.Abs(Hareket));
     }
-    private void OnCollisionEnter(Collision yerTemasi)
+    private void OnTriggerEnter(Collider other)
     {
-        if (yerTemasi.gameObject.tag == "zemin")
+        if (other.gameObject.tag == "zemin")
         {
             karakterYerde = true;
         }
@@ -49,6 +48,8 @@ public class karakter : MonoBehaviour
         if (Input.GetButtonDown("Jump") && karakterYerde == true)
         {
             rb.AddForce(Vector2.up * ziplamaGucu, ForceMode.Impulse);
+            anim.ResetTrigger("idle");
+            anim.SetTrigger("jump");
             karakterYerde = false;
         }
 
