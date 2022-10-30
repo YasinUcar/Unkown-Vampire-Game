@@ -24,6 +24,6 @@ public class Platforms : MonoBehaviour
                 i = 0;
             }
         }
-        transform.position = Vector2.MoveTowards(transform.position, points[i].position, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, points[i].position, speed * Time.deltaTime);
     }
 }

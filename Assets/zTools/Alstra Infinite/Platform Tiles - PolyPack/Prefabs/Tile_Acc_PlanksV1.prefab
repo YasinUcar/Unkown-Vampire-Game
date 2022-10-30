@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 3949316401977084695}
   - component: {fileID: 4736938935719523127}
   - component: {fileID: 143172918}
+  - component: {fileID: 585440095}
   m_Layer: 0
   m_Name: Tile_Acc_PlanksV1
-  m_TagString: zemin
+  m_TagString: platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,8 +112,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b72695b3cd15e3d4185a04807dccbc78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 4
   startingPoint: 0
   points:
   - {fileID: 0}
   - {fileID: 0}
+--- !u!65 &585440095
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3300635121997605570}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9588964, y: 0.10325059, z: 1.9291983}
+  m_Center: {x: -0.9950383, y: 0.051625296, z: 0.9911686}

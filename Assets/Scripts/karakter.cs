@@ -6,12 +6,14 @@ using UnityEngine.UIElements;
 public class karakter : MonoBehaviour
 {
     #region NOTLAR : tek yerde kullanacağın değişkenler için scritableObject kullanabilirsin türkçe karakter içeren (i,ü,ı) gibi değerl verme
+    [SerializeField] AudioClip vampirAttackSFX;
     float hiz = 5f;
     public float ziplamaGucu;
     private bool karakterYerde;
     public Rigidbody rb;
     private float Hareket;
     private Animator anim;
+
     #endregion
 
     void Start()
@@ -28,6 +30,10 @@ public class karakter : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "zemin")
+        {
+            karakterYerde = true;
+        }
+        if (other.gameObject.tag == "platform")
         {
             karakterYerde = true;
         }
@@ -72,6 +78,11 @@ public class karakter : MonoBehaviour
             anim.ResetTrigger("idle");
             anim.ResetTrigger("Walk");
             anim.SetTrigger("attack");
+
+            if (AudioManager.Instance != null)
+
+                AudioManager.Instance.PlaySound(vampirAttackSFX);
+
         }
 
     }
