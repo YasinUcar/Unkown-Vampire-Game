@@ -7,6 +7,7 @@ public class karakter : MonoBehaviour
 {
     #region NOTLAR : tek yerde kullanacağın değişkenler için scritableObject kullanabilirsin türkçe karakter içeren (i,ü,ı) gibi değerl verme
     [SerializeField] AudioClip vampirAttackSFX;
+    
     float hiz = 5f;
     public float ziplamaGucu;
     private bool karakterYerde;
@@ -58,6 +59,11 @@ public class karakter : MonoBehaviour
         {
             print("öldünke");
             playerDeath.Death();
+        }
+
+        if (other.gameObject.tag == "Respawn")
+        {
+
         }
     }
     void Move()
