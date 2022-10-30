@@ -6,6 +6,10 @@ TagManager:
   tags:
   - zemin
   - platform
+  - Score
+  - GameCanvas
+  - DeathArea
+  - GameOver
   layers:
   - Default
   - TransparentFX

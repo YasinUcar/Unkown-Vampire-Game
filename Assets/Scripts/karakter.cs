@@ -15,27 +15,49 @@ public class karakter : MonoBehaviour
     private Animator anim;
 
     #endregion
-
+    PlayerDeath playerDeath;
+    Score score;
+    PlayerHealth playerHealth;
+    private void Awake()
+    {
+        Time.timeScale = 1;
+    }
     void Start()
     {
         rb = transform.GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+        playerDeath = GetComponent<PlayerDeath>();
+
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
     }
     void Update()
     {
         //olabildiğince kodu parçlara böl spagetti koddan uzak durmaya çalış
         Move();
         PlayAnim();
+        Deneme();
+    }
+    void Deneme()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            playerHealth.ReduceCurrentHealth(10);
+            if (playerHealth.GetCurrentHealth() <= 0)
+            {
+                playerDeath.Death();
+            }
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "zemin")
+        if (other.gameObject.tag == "zemin" || other.gameObject.tag == "platform")
         {
             karakterYerde = true;
         }
-        if (other.gameObject.tag == "platform")
+        if (other.gameObject.tag == "DeathArea")
         {
-            karakterYerde = true;
+            print("öldünke");
+            playerDeath.Death();
         }
     }
     void Move()
