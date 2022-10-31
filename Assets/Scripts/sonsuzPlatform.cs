@@ -18,8 +18,8 @@ public class sonsuzPlatform : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             GameObject platform2 = Instantiate(platform1, new Vector3(other.transform.localPosition.x + spawnLocation, platform1.transform.position.y, platform1.transform.position.z), Quaternion.identity);
-
         }
+
     }
 
 }

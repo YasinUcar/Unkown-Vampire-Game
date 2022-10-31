@@ -7,7 +7,7 @@ public class karakter : MonoBehaviour
 {
     #region NOTLAR : tek yerde kullanacağın değişkenler için scritableObject kullanabilirsin türkçe karakter içeren (i,ü,ı) gibi değerl verme
     [SerializeField] AudioClip vampirAttackSFX;
-    
+
     float hiz = 5f;
     public float ziplamaGucu;
     private bool karakterYerde;
@@ -28,7 +28,6 @@ public class karakter : MonoBehaviour
         rb = transform.GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         playerDeath = GetComponent<PlayerDeath>();
-
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
     }
     void Update()
@@ -36,17 +35,13 @@ public class karakter : MonoBehaviour
         //olabildiğince kodu parçlara böl spagetti koddan uzak durmaya çalış
         Move();
         PlayAnim();
-        Deneme();
+        isDeath();
     }
-    void Deneme()
+    void isDeath()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (playerHealth.GetCurrentHealth() <= 0)
         {
-            playerHealth.ReduceCurrentHealth(10);
-            if (playerHealth.GetCurrentHealth() <= 0)
-            {
-                playerDeath.Death();
-            }
+            playerDeath.Death();
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -57,11 +52,16 @@ public class karakter : MonoBehaviour
         }
         if (other.gameObject.tag == "DeathArea")
         {
-            print("öldünke");
+            
             playerDeath.Death();
         }
 
-        if (other.gameObject.tag == "Respawn")
+        if (other.gameObject.tag == "Enemy")
+        {
+            playerHealth.ReduceCurrentHealth(10);
+
+        }
+        if (other.gameObject.tag == "Last")
         {
 
         }

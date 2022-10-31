@@ -10,6 +10,10 @@ TagManager:
   - GameCanvas
   - DeathArea
   - GameOver
+  - postPro
+  - Wolf
+  - Enemy
+  - Last
   layers:
   - Default
   - TransparentFX
@@ -17,9 +21,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - PostPro
+  - Player
+  - Ground
   - 
   - 
   - 
