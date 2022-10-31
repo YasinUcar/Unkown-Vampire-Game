@@ -9,11 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 175852, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
       propertyPath: m_Name
-      value: Wolf
-      objectReference: {fileID: 0}
-    - target: {fileID: 175852, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
+      value: Wolf (2)
       objectReference: {fileID: 0}
     - target: {fileID: 477254, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
       propertyPath: m_RootOrder
@@ -21,7 +17,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 477254, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 133.72
+      value: 72.76
       objectReference: {fileID: 0}
     - target: {fileID: 477254, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
       propertyPath: m_LocalPosition.y
@@ -59,40 +55,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9547338, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 4207a14823e50e6438f37b401c727159, type: 2}
-    - target: {fileID: 4389537461569440128, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
-      propertyPath: m_AngularSpeed
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 4389537461569440128, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
-      propertyPath: m_StoppingDistance
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6579126092163762586, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
-      propertyPath: chaseRange
-      value: 10.09
-      objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 7559930739271268839, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
+    - {fileID: 1819583671, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
---- !u!1 &2572399614161533369 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 175852, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
-  m_PrefabInstance: {fileID: 2572399614161426261}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &1819583671
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2572399614161533369}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.0961239, y: 2.7783747, z: 2.6004016}
-  m_Center: {x: -0.048061967, y: 0.88918734, z: 0.8002012}

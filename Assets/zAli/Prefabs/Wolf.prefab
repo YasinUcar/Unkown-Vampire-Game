@@ -797,13 +797,14 @@ GameObject:
   m_Component:
   - component: {fileID: 477254}
   - component: {fileID: 9547338}
-  - component: {fileID: 7559930739271268839}
   - component: {fileID: 4389537461569440128}
   - component: {fileID: 7969309345379670355}
   - component: {fileID: 6579126092163762586}
+  - component: {fileID: 301579264}
+  - component: {fileID: 1819583671}
   m_Layer: 0
   m_Name: Wolf
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -815,7 +816,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 175852}
-  m_LocalRotation: {x: 0, y: -0.28635734, z: 0, w: 0.9581229}
+  m_LocalRotation: {x: 0, y: -0.28635725, z: 0, w: 0.95812297}
   m_LocalPosition: {x: -1.6315856, y: -2.3763413e-17, z: 1.0702089}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
@@ -829,7 +830,7 @@ Transform:
   - {fileID: 457028}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -33.28, z: 0}
 --- !u!95 &9547338
 Animator:
   serializedVersion: 4
@@ -840,7 +841,7 @@ Animator:
   m_GameObject: {fileID: 175852}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 1021c3a1a114cd149aa3d292fe946e87, type: 3}
-  m_Controller: {fileID: 9100000, guid: 637de76f13af2dc48b2b805604d0735a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4207a14823e50e6438f37b401c727159, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -850,21 +851,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7559930739271268839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 175852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da3b64c757eefbc4f943b08eb40a95a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  chaseRange: 3
-  anim: {fileID: 9547338}
 --- !u!195 &4389537461569440128
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -878,8 +864,8 @@ NavMeshAgent:
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_AngularSpeed: 500
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -915,21 +901,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49ae9189e081933409c6b5e6a23a09ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
   anim: {fileID: 9547338}
   agent: {fileID: 4389537461569440128}
-  player: {fileID: 0}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 128
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 64
   timeBetweenAttacks: 3
-  sightRange: 3
-  attackRange: 3
+  target: {fileID: 0}
+  chaseRange: 2.66
+  sightRange: 2.66
+  attackRange: 2.66
   playerInSightRange: 0
   playerInattackRange: 0
+--- !u!65 &301579264
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175852}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0961239, y: 2.7783747, z: 2.6004016}
+  m_Center: {x: -0.048061967, y: 0.88918734, z: 0.8002012}
+--- !u!65 &1819583671
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175852}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0961239, y: 2.7783747, z: 2.6004016}
+  m_Center: {x: -0.048061967, y: 0.88918734, z: 0.8002012}
 --- !u!1 &176664
 GameObject:
   m_ObjectHideFlags: 0

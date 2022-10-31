@@ -18,10 +18,12 @@ public class PlayerDeath : MonoBehaviour
 
     public void Death()
     {
-        if (AudioManager.Instance != null)
-            AudioManager.Instance.PlaySound(deathSFX);
-        player.enabled = false;
         anim.SetTrigger("die");
         gameOver.SetActive(true);
+        player.enabled = false;
+
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlaySound(deathSFX);
+
     }
 }

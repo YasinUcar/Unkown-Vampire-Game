@@ -14,6 +14,7 @@ public class karakter : MonoBehaviour
     public Rigidbody rb;
     private float Hareket;
     private Animator anim;
+    bool isAttack;
 
     #endregion
     PlayerDeath playerDeath;
@@ -27,6 +28,7 @@ public class karakter : MonoBehaviour
     {
         rb = transform.GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+        score = GameObject.FindGameObjectWithTag("GameCanvas").GetComponent<Score>();
         playerDeath = GetComponent<PlayerDeath>();
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
     }
@@ -36,6 +38,7 @@ public class karakter : MonoBehaviour
         Move();
         PlayAnim();
         isDeath();
+
     }
     void isDeath()
     {
@@ -52,18 +55,29 @@ public class karakter : MonoBehaviour
         }
         if (other.gameObject.tag == "DeathArea")
         {
-            
+
             playerDeath.Death();
         }
 
         if (other.gameObject.tag == "Enemy")
         {
-            playerHealth.ReduceCurrentHealth(10);
+            if (isAttack == true)
+            {
+                score.IncreaseCurrentScore(100);
+                Destroy(other.gameObject);
+            }
+            else
+            {
+                playerHealth.ReduceCurrentHealth(10);
+                score.ReduceCurrentScore(100);
+            }
+
+
 
         }
         if (other.gameObject.tag == "Last")
         {
-
+            score.IncreaseCurrentScore(1000);
         }
     }
     void Move()
@@ -73,14 +87,17 @@ public class karakter : MonoBehaviour
 
         if (Input.GetAxisRaw("Horizontal") == -1)
         {
+            isAttack = false;
             transform.rotation = Quaternion.Euler(0f, 270f, 0f);
         }
         else if (Input.GetAxisRaw("Horizontal") == 1)
         {
+            isAttack = false;
             transform.rotation = Quaternion.Euler(0f, 90f, 0f);
         }
         if (Input.GetButtonDown("Jump") && karakterYerde == true)
         {
+            isAttack = false;
             rb.AddForce(Vector2.up * ziplamaGucu, ForceMode.Impulse);
             anim.ResetTrigger("idle");
             anim.SetTrigger("jump");
@@ -92,17 +109,20 @@ public class karakter : MonoBehaviour
     {
         if (Mathf.Abs(Hareket) > Mathf.Epsilon)
         {
+
             anim.ResetTrigger("idle");
             anim.SetTrigger("Walk");
 
         }
         if (Mathf.Abs(Hareket) == 0)
         {
+
             anim.ResetTrigger("Walk");
             anim.SetTrigger("idle");
         }
         if (Input.GetMouseButtonDown(0))
         {
+            isAttack = true;
             anim.ResetTrigger("idle");
             anim.ResetTrigger("Walk");
             anim.SetTrigger("attack");
